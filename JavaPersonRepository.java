@@ -1,23 +1,13 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util...
 
 public class JavaPersonRepository {
 
     private final HashMap<Passport, Person> registry = new HashMap<>();
 
-    public void insert(Person person) {
-        registry.put(person.getPassport(), person);
-    }
-
-    public void changePassport(Passport oldPassport, int newSerial, int newNumber) {
-        Person person = registry.get(oldPassport);
-        Passport passport = person.getPassport(newPassport);
-
-        passport.setSerial(newSerial);
-        passport.setNumber(newNumber);
+    public void insert(Passport passport, Person person) {
+        registry.put(passport, person);
     }
 
     public List<Person> filterAge(ArrayList<Person> persons, int age) {
@@ -27,6 +17,15 @@ public class JavaPersonRepository {
             }
         }
         return persons;
+    }
+
+    public void changePassport(Passport oldPassport, Passport newPassport) {
+        Person person = registry.get(oldPassport);
+        person.setPassport(newPassport);
+    }
+
+    public void storeToChannel(HttpPersonChannel channel, int secondTimeout) {
+        registry.values().parallelStream().forEach(p -> channel.send(p, secondTimeout));
     }
 
 }

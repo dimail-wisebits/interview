@@ -9,7 +9,7 @@ public class JdbcPersonRepository {
 
     public Person insertOrUpdate(Person person) {
 
-        if (existed(person)) {
+        if (exists(person)) {
             return update(person);
         } else {
             return insert(person);
@@ -17,7 +17,7 @@ public class JdbcPersonRepository {
 
     }
 
-    public boolean existed(Person person) {
+    public boolean exists(Person person) {
         return ...
     }
 
