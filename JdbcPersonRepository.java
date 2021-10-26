@@ -2,7 +2,7 @@ package test;
 
 import org.springframework...
 
-@Repository
+@Service
 public class JdbcPersonRepository {
 
     private JdbcTemplate jdbcTemplate;
@@ -18,16 +18,19 @@ public class JdbcPersonRepository {
     }
 
     public boolean exists(Person person) {
+        // to do something
         return ...
     }
 
     @Transactional
     public Person insert(Person person) {
+        // to do something
         return ...
     }
 
     @Transactional
     public Person update(Person person) {
+        // to do something
         return  ...
     }
 
