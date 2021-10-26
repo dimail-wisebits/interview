@@ -8,13 +8,11 @@ public class JdbcPersonRepository {
     private JdbcTemplate jdbcTemplate;
 
     public Person insertOrUpdate(Person person) {
-
         if (exists(person)) {
-            return update(person);
+            return create(person);
         } else {
-            return insert(person);
+            return update(person);
         }
-
     }
 
     public boolean exists(Person person) {
@@ -23,14 +21,14 @@ public class JdbcPersonRepository {
     }
 
     @Transactional
-    public Person insert(Person person) {
-        // to do something
+    public Person create(Person person) {
+        // to do something with jdbcTemplate
         return ...
     }
 
     @Transactional
     public Person update(Person person) {
-        // to do something
+        // to do something with jdbcTemplate
         return  ...
     }
 
