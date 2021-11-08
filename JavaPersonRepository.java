@@ -6,8 +6,13 @@ public class JavaPersonRepository {
 
     private final HashMap<Passport, Person> registry = new HashMap<>();
 
-    public void insert(Passport passport, Person person) {
-        registry.put(passport, person);
+    public void insert(Person person) {
+        registry.put(passport.getPassport(), person);
+    }
+
+    public void changePassport(Passport oldPassport, Passport newPassport) {
+        Person person = registry.get(oldPassport);
+        person.setPassport(newPassport);
     }
 
     public List<Person> filterAge(ArrayList<Person> persons, int age) {
@@ -17,11 +22,6 @@ public class JavaPersonRepository {
             }
         }
         return persons;
-    }
-
-    public void changePassport(Passport oldPassport, Passport newPassport) {
-        Person person = registry.get(oldPassport);
-        person.setPassport(newPassport);
     }
 
     public void storeToChannel(HttpPersonChannel channel, int secondTimeout) {
